@@ -6,13 +6,13 @@ class Upload extends React.Component {
         super();
         this.state ={
             file: [],
-            category: ''
+            category: 'unlabelled'
         };
         this.onFormSubmit = this.onFormSubmit.bind(this);
         this.onChange = this.onChange.bind(this);
     }
-    onFormSubmit(values){
-        values.preventDefault();
+    onFormSubmit(e){
+        e.preventDefault();
         let formData = new FormData();
         var files = (this.state.file);
         console.log(files.length);
