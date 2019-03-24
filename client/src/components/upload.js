@@ -15,7 +15,6 @@ class Upload extends React.Component {
         e.preventDefault();
         let formData = new FormData();
         var files = (this.state.file);
-        console.log(files.length);
         for (let i=0;i<files.length;i++) {
             formData.append("files",files[i]);
         }
@@ -24,13 +23,11 @@ class Upload extends React.Component {
                 'content-type': 'multipart/form-data'
             }
         };
-        for (var value of formData.values()) {
-            console.log(value);
-        }
         axios.post("http://localhost:8000/uploads/"+this.state.category,formData,config)
             .then((response) => {
                 console.log(response);
             }).catch((error) => {
+                console.log(error);
         });
     }
     onChange(e) {
