@@ -51,7 +51,12 @@ router.post('/uploads/:id',function(req,res){
 router.post('/images/:id',function(req,res){
     let id = req.params.id;
     Image.findOne({label:id},function(err,data){
-        res.send(data.images)
+        if(data){
+            res.send(data.images)
+        }
+        else{
+            res.send(err)
+        }
     })
 })
 router.get('/labels',function(req,res){
